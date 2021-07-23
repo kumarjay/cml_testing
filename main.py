@@ -40,4 +40,7 @@ plt.savefig('pr_curve.png')
 
 y_pred= dt_reg.predict(x_test)
 
-print(accuracy_score(y_pred, y_test))
+
+# print(accuracy_score(y_pred, y_test))
+
+
