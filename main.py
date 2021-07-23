@@ -32,13 +32,19 @@ x_train, x_test, y_train, y_test= train_test_split(x,y, test_size=0.2)
 dt_reg= DecisionTreeClassifier()
 dt_reg.fit(x_train, y_train)
 
+y_pred= dt_reg.predict(x_test)
+acc_score= accuracy_score(y_pred, y_test)
+
+with open('results.txt') as outfile:
+    outfile.write('Accuracy: '+ str(acc_score)+ '\n')
+
 plot_confusion_matrix(dt_reg, x_test, y_test, cmap= plt.cm.Blues)
 plt.savefig('conf_matrix.png')
 plot_precision_recall_curve(dt_reg, x_test, y_test)
 plt.savefig('pr_curve.png')
 
 
-y_pred= dt_reg.predict(x_test)
+
 
 
 # print(accuracy_score(y_pred, y_test))
