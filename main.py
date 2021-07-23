@@ -35,7 +35,7 @@ dt_reg.fit(x_train, y_train)
 y_pred= dt_reg.predict(x_test)
 acc_score= accuracy_score(y_pred, y_test)
 
-with open('results.txt') as outfile:
+with open('results.txt', 'w') as outfile:
     outfile.write('Accuracy: '+ str(acc_score)+ '\n')
 
 plot_confusion_matrix(dt_reg, x_test, y_test, cmap= plt.cm.Blues)
