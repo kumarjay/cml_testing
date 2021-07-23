@@ -2,12 +2,13 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, plot_confusion_matrix, plot_precision_recall_curve, precision_recall_curve
 from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
+
 
 train= pd.read_csv('data/train.csv')
 train.drop(['PassengerId', 'Name', 'Cabin'],axis= 1, inplace=True)
@@ -28,19 +29,19 @@ for col in obj_col:
 
 x_train, x_test, y_train, y_test= train_test_split(x,y, test_size=0.2)
 
-
+rnd_clf= RandomForestClassifier()
 dt_reg= DecisionTreeClassifier()
-dt_reg.fit(x_train, y_train)
+rnd_clf.fit(x_train, y_train)
 
-y_pred= dt_reg.predict(x_test)
+y_pred= rnd_clf.predict(x_test)
 acc_score= accuracy_score(y_pred, y_test)
 
 with open('results.txt', 'w') as outfile:
-    outfile.write('Accuracy: '+ str(acc_score)+ '\n')
+    outfile.write('Accuracy Score is: '+ str(acc_score)+ '\n')
 
-plot_confusion_matrix(dt_reg, x_test, y_test, cmap= plt.cm.Blues)
+plot_confusion_matrix(rnd_clf, x_test, y_test, cmap= plt.cm.Blues)
 plt.savefig('conf_matrix.png')
-plot_precision_recall_curve(dt_reg, x_test, y_test)
+plot_precision_recall_curve(rnd_clf, x_test, y_test)
 plt.savefig('pr_curve.png')
 
 
