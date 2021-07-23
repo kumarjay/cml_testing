@@ -32,6 +32,7 @@ x_train, x_test, y_train, y_test= train_test_split(x,y, test_size=0.2)
 rnd_clf= RandomForestClassifier()
 dt_reg= DecisionTreeClassifier()
 rnd_clf.fit(x_train, y_train)
+print('abc')
 
 y_pred= rnd_clf.predict(x_test)
 acc_score= accuracy_score(y_pred, y_test)
