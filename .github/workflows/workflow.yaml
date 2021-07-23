@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # may need to setup NodeJS & Python3 on e.g. self-hosted
-      # - uses: actions/setup-node@v
+      # - uses: actions/setup-node@v1
       #   with:
       #     node-version: '12'
       # - uses: actions/setup-python@v2
